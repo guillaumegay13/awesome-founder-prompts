@@ -6,37 +6,40 @@
 
 Great operators have a way of thinking. When they share the system prompts they actually use, that thinking becomes a drop-in tool. This repo collects those prompts, verbatim, with sources.
 
-No skills metadata, no plugin manifests, no taxonomy. Just markdown files you can read, copy, or fetch.
+No metadata, no plugins, no taxonomy. Each file is just the raw prompt.
 
 ## Available prompts
 
-| Person | Role | File |
-|---|---|---|
-| Marc Andreessen | Co-founder, a16z | [prompts/marc-andreessen.md](prompts/marc-andreessen.md) |
+| Person | Role | Source | File |
+|---|---|---|---|
+| Marc Andreessen | Co-founder, a16z | [@pmarca](https://x.com/pmarca/status/2051374498994364529) | [marc-andreessen.md](prompts/marc-andreessen.md) |
 
 ## Install
 
-Every prompt lives in a fenced code block inside its `.md` file. Fetch the raw markdown and slice out the block, or just copy-paste.
+Every file under `prompts/` is the raw system prompt — no headers, no fences, no metadata. Fetch it as plain text.
 
 ### Python
 
 ```python
-import re, requests
+import requests
 
-url = "https://raw.githubusercontent.com/guillaumegay13/awesome-founder-prompts/main/prompts/marc-andreessen.md"
-md = requests.get(url).text
-system_prompt = re.search(r"```text\n(.*?)\n```", md, re.DOTALL).group(1)
+system_prompt = requests.get(
+    "https://raw.githubusercontent.com/guillaumegay13/awesome-founder-prompts/main/prompts/marc-andreessen.md"
+).text
 
-# Use with OpenAI / Anthropic SDK
+# OpenAI
 # client.responses.create(model="gpt-5", instructions=system_prompt, input="...")
+
+# Anthropic
+# client.messages.create(model="claude-opus-4-7", system=system_prompt, messages=[...])
 ```
 
 ### Node
 
 ```js
-const url = "https://raw.githubusercontent.com/guillaumegay13/awesome-founder-prompts/main/prompts/marc-andreessen.md";
-const md = await fetch(url).then(r => r.text());
-const systemPrompt = md.match(/```text\n([\s\S]*?)\n```/)[1];
+const systemPrompt = await fetch(
+  "https://raw.githubusercontent.com/guillaumegay13/awesome-founder-prompts/main/prompts/marc-andreessen.md"
+).then(r => r.text());
 ```
 
 ### curl
@@ -47,12 +50,13 @@ curl -s https://raw.githubusercontent.com/guillaumegay13/awesome-founder-prompts
 
 ## Contributing
 
-Open a PR adding `prompts/<slug>.md`. Each entry must include:
+Open a PR adding `prompts/<slug>.md` containing **only** the verbatim prompt text — no front-matter, no fences. In the PR description, include:
 
-1. The prompt text the person actually published, verbatim, in a fenced ```` ```text ```` block.
-2. A direct link to the public source (tweet, blog, podcast transcript, etc.).
-3. The date the prompt was captured.
-4. One sentence of context.
+1. A direct link to the public source (tweet, blog, podcast transcript, etc.).
+2. The date the prompt was captured.
+3. One sentence of context.
+
+Attribution then goes into the table in this README.
 
 No paraphrasing, no "inspired by" prompts, no leaks. Public, attributable, verbatim.
 
