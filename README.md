@@ -8,45 +8,11 @@ Great operators have a way of thinking. When they share the system prompts they 
 
 No metadata, no plugins, no taxonomy. Each file is just the raw prompt.
 
-## Available prompts
+## Prompts
 
 | Person | Role | Source | Date |
 |---|---|---|---|
 | [Marc Andreessen](prompts/marc-andreessen.md) | Co-founder, a16z | [@pmarca](https://x.com/pmarca/status/2051374498994364529) | 2026-05-04 |
-
-## Install
-
-Every file under `prompts/` is the raw system prompt — no headers, no fences, no metadata. Fetch it as plain text.
-
-### Python
-
-```python
-import requests
-
-system_prompt = requests.get(
-    "https://raw.githubusercontent.com/guillaumegay13/legendary-prompts/main/prompts/marc-andreessen.md"
-).text
-
-# OpenAI
-# client.responses.create(model="gpt-5", instructions=system_prompt, input="...")
-
-# Anthropic
-# client.messages.create(model="claude-opus-4-7", system=system_prompt, messages=[...])
-```
-
-### Node
-
-```js
-const systemPrompt = await fetch(
-  "https://raw.githubusercontent.com/guillaumegay13/legendary-prompts/main/prompts/marc-andreessen.md"
-).then(r => r.text());
-```
-
-### curl
-
-```bash
-curl -s https://raw.githubusercontent.com/guillaumegay13/legendary-prompts/main/prompts/marc-andreessen.md
-```
 
 ## Contributing
 
