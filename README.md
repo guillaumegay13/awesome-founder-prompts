@@ -1,6 +1,6 @@
-# awesome-founder-prompts
+# legendary-prompts
 
-> A minimalist collection of system prompts from famous founders, investors, and builders. Drop them into your OpenAI/Anthropic SDK and code like they would.
+> A minimalist collection of system prompts from legendary founders, investors, engineers, and researchers. Drop them into your OpenAI/Anthropic SDK and think like they do.
 
 ## Why
 
@@ -24,7 +24,7 @@ Every file under `prompts/` is the raw system prompt — no headers, no fences, 
 import requests
 
 system_prompt = requests.get(
-    "https://raw.githubusercontent.com/guillaumegay13/awesome-founder-prompts/main/prompts/marc-andreessen.md"
+    "https://raw.githubusercontent.com/guillaumegay13/legendary-prompts/main/prompts/marc-andreessen.md"
 ).text
 
 # OpenAI
@@ -38,14 +38,14 @@ system_prompt = requests.get(
 
 ```js
 const systemPrompt = await fetch(
-  "https://raw.githubusercontent.com/guillaumegay13/awesome-founder-prompts/main/prompts/marc-andreessen.md"
+  "https://raw.githubusercontent.com/guillaumegay13/legendary-prompts/main/prompts/marc-andreessen.md"
 ).then(r => r.text());
 ```
 
 ### curl
 
 ```bash
-curl -s https://raw.githubusercontent.com/guillaumegay13/awesome-founder-prompts/main/prompts/marc-andreessen.md
+curl -s https://raw.githubusercontent.com/guillaumegay13/legendary-prompts/main/prompts/marc-andreessen.md
 ```
 
 ## Contributing
